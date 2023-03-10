@@ -80,10 +80,19 @@ async function urlTest() {
 
 urlTest()
 
+console.log('---------Axios-------');
 
+const oneOne = document.querySelector('.one')
+const two = document.querySelector('.two')
+const there = document.querySelector('.three')
 
+fetch(URL).then(res => res.json()).then(res => oneOne.setAttribute('src', res.message))
 
+axios.get(URL).then(res => two.setAttribute('src', res.data.message))
 
+async function showImage() {
+    const response = await axios.get(URL)
+    there.setAttribute('src', response.data.message)
+}
 
-
-
+showImage()
